@@ -24,3 +24,9 @@
     z-index: 100;
     overflow: hidden;
   }
+
+  .button-disposition {
+    display: flex;
+    flex-direction: line;
+    justify-content: space-around;
+  }

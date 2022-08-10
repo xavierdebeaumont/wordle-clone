@@ -18,6 +18,7 @@ function App() {
   const [lettersInfo, setLettersInfo] = useState({});
   const [gameOver, setGameOver] = useState({ gameOver: false, guessedWord: false })
   const [showGameOverScreen, setShowGameOverScreen] = useState(true);
+  const [replay, setReplay] = useState(0);
   console.log(solution)
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function App() {
       setSolution(words.solution);
       setWordSet(words.wordSet);
     })
-  }, [])
+  }, [replay])
 
   const onSelectLetter = (keyValue) => {
     if (currInput.letterPos > 4) {
@@ -73,14 +74,22 @@ function App() {
     setShowGameOverScreen(false);
   }
 
+  const replayHandler = () => {
+    setBoard(new Array(6).fill("").map(()=>Array(5).fill("")));
+    setCurrInput({ attempt: 0, letterPos: 0 })
+    setLettersInfo({});
+    setGameOver({ gameOver: false, guessedWord: false })
+    setShowGameOverScreen(true);
+    setReplay((prevNum) => (prevNum + 1))
+  }
+
   return (
     <div className="App">
       <Header />
-      {/* {solution} */}
       <Game>
-        <AppContext.Provider value={{ board, setBoard, currInput, setCurrInput, onSelectLetter, onEnter, onDelete, solution, lettersInfo, setLettersInfo, gameOver, setGameOver }}>
+        <AppContext.Provider value={{ board, setBoard, currInput, setCurrInput, onSelectLetter, onEnter, onDelete, solution, lettersInfo, setLettersInfo, gameOver, setGameOver, replay }}>
           <Board board={board} />
-          {gameOver.gameOver && showGameOverScreen && <GameOver onConfirm={closeModalHandler}/>}
+          {gameOver.gameOver && showGameOverScreen && <GameOver onConfirm={closeModalHandler} onReplay={replayHandler}/>}
           <Keyboard />
         </AppContext.Provider>
       </Game>  

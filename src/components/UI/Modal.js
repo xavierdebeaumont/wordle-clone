@@ -9,7 +9,10 @@ const Modal = (props) => {
             <div className={styles.backdrop} onClick={props.onConfirm}></div>
             <Card className={styles.modal}>
                 {props.children}
-                <Button onClick={props.onConfirm}>Close</Button>
+                <div className={styles['button-disposition']}>
+                    <Button onClick={props.onConfirm}>Close</Button>
+                    <Button onClick={props.onReplay}>Replay</Button>
+                </div>
             </Card>
         </div>
 
