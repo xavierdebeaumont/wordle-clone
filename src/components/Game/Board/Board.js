@@ -1,10 +1,10 @@
-import classes from './Board.module.css'
+import styles from './Board.module.css'
 import Line from './Line'
 
 const Board = (props) => {
 
   return (
-    <div className={classes.board}>
+    <div className={styles.board}>
     {
       props.board.map((guess, attemptValue) => {
         return (

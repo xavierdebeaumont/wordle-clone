@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 import Header from './components/Layout/Header';
 import Board from './components/Game/Board/Board';
 import Keyboard from './components/Game/Keyboard/Keyboard';
@@ -17,6 +17,7 @@ function App() {
   const [currInput, setCurrInput] = useState({ attempt: 0, letterPos: 0 })
   const [lettersInfo, setLettersInfo] = useState({});
   const [gameOver, setGameOver] = useState({ gameOver: false, guessedWord: false })
+  const [showGameOverScreen, setShowGameOverScreen] = useState(true);
   console.log(solution)
 
   useEffect(() => {
@@ -63,9 +64,13 @@ function App() {
         return;
       }
     }
-    if(currInput.attempt === 5){
+    if (currInput.attempt === 5) {
       setGameOver({ gameOver: true, guessedWord: false })
     }
+  }
+
+  const closeModalHandler = () => {
+    setShowGameOverScreen(false);
   }
 
   return (
@@ -75,9 +80,10 @@ function App() {
       <Game>
         <AppContext.Provider value={{ board, setBoard, currInput, setCurrInput, onSelectLetter, onEnter, onDelete, solution, lettersInfo, setLettersInfo, gameOver, setGameOver }}>
           <Board board={board} />
-          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          {gameOver.gameOver && showGameOverScreen && <GameOver onConfirm={closeModalHandler}/>}
+          <Keyboard />
         </AppContext.Provider>
-      </Game>
+      </Game>  
     </div>
   );
 }

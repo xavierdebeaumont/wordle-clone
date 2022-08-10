@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../../../App'
-import classes from './Key.module.css'
+import styles from './Key.module.css'
 
 
 const Key = (props) => {
@@ -20,9 +20,11 @@ const Key = (props) => {
 
   const lowKey = props.keyValue.toLowerCase();
   const keyStyle = lettersInfo[lowKey];
+  const size = props.keyValue.length > 1 ? "big" : undefined;
+  
 
   return (
-    <button className={`${classes.key} ${classes[keyStyle]}`} id={props.keyValue.length > 1 ? "big" : undefined} onClick={selectletter}>
+    <button className={`${styles.key} ${styles[keyStyle]} ${styles[size]}`} onClick={selectletter}>
       {props.keyValue}
     </button>
   )

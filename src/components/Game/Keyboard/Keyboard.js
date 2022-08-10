@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect } from 'react'
 import { AppContext } from '../../../App'
-import classes from './Keyboard.module.css'
+import styles from './Keyboard.module.css'
 import KeyboardRow from './KeyboardRow'
 
 const Keyboard = () => {
@@ -35,7 +35,7 @@ const Keyboard = () => {
   }, [HandleKeyboard])
 
   return (
-    <div className={classes.keyboard} onKeyDown={HandleKeyboard}>
+    <div className={styles.keyboard} onKeyDown={HandleKeyboard}>
       {keyboardValues.map((keyLineValue) => {
         return(
           <KeyboardRow keyLineValue={keyLineValue}/>

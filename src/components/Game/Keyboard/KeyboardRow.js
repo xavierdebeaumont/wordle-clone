@@ -1,10 +1,10 @@
 import React from 'react'
 import Key from './Key'
-import classes from './KeyboardRow.module.css'
+import styles from './KeyboardRow.module.css'
 
 const KeyboardRow = (props) => {
     return (
-        <div className={classes.row}>{
+        <div className={styles.row}>{
             props.keyLineValue.map((keyValue) => {
                 return (
                     <Key keyValue={keyValue} />

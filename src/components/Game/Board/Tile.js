@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../../App'
-import classes from './Tile.module.css'
+import styles from './Tile.module.css'
 
 const Tile = (props) => {
   const { solution, currInput, setLettersInfo } = useContext(AppContext)
@@ -27,10 +27,10 @@ const Tile = (props) => {
   }, [currInput.attempt]);
 
 
-  const letterStyle = currInput.attempt > props.attemptValue && (isCorrect ? classes.correct : isClose ? classes.almost : classes.error)
+  const letterStyle = currInput.attempt > props.attemptValue && (isCorrect ? styles.correct : isClose ? styles.almost : styles.error)
 
   return (
-    <div className={`${classes.tile} ${letterStyle}`}>{props.letterValue}</div>
+    <div className={`${styles.tile} ${letterStyle}`}>{props.letterValue}</div>
   )
 }
 

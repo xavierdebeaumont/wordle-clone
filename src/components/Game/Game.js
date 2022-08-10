@@ -1,9 +1,9 @@
 import React from 'react'
-import classes from './Game.module.css'
+import styles from './Game.module.css'
 
 const Game = (props) => {
   return (
-    <div className={classes.game}>{props.children}</div>
+    <div className={styles.game}>{props.children}</div>
   )
 }
 
