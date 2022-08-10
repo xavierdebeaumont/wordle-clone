@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# wordle-clone
+I made a clone of wordle in react with some suggestion of plays.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
