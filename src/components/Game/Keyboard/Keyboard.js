@@ -36,9 +36,9 @@ const Keyboard = () => {
 
   return (
     <div className={styles.keyboard} onKeyDown={HandleKeyboard}>
-      {keyboardValues.map((keyLineValue) => {
+      {keyboardValues.map((keyLineValue, indexLine) => {
         return(
-          <KeyboardRow keyLineValue={keyLineValue}/>
+          <KeyboardRow key={indexLine} keyLineValue={keyLineValue}/>
         )
       })}
     </div>

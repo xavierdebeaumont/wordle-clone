@@ -5,9 +5,9 @@ import styles from './KeyboardRow.module.css'
 const KeyboardRow = (props) => {
     return (
         <div className={styles.row}>{
-            props.keyLineValue.map((keyValue) => {
+            props.keyLineValue.map((keyValue, indexKey) => {
                 return (
-                    <Key keyValue={keyValue} />
+                    <Key key={indexKey} keyValue={keyValue} />
                 )
             })
         }
