@@ -1,0 +1,10 @@
+.game {
+    width: 100vw;
+    max-width: 500px;
+    height: calc(100vh - 115px);
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    flex-direction: column;
+    margin: 0 auto;
+  }

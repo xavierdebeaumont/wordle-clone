@@ -1,0 +1,8 @@
+.board {
+    width: 350px;
+    height: 420px;
+    border: 1px solid black;
+    display: flex;
+    flex: initial;
+    flex-direction: column;
+  }
