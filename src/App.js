@@ -4,15 +4,16 @@ import Board from './components/Game/Board/Board';
 import Keyboard from './components/Game/Keyboard/Keyboard';
 import Game from './components/Game/Game';
 import GameOver from './components/Layout/GameOver';
-import { initialBoard } from './Utils'
+import { initialBoard } from './Word'
 import { useEffect, useState, createContext } from 'react';
-import { fetchWords } from './Utils';
+import { fetchWords, fetchAllowedWords } from './Word';
 
 export const AppContext = createContext();
 
 function App() {
   const [solution, setSolution] = useState('');
   const [wordSet, setWordSet] = useState(new Set());
+  const [allowedWordSet, setAllowedWordSet] = useState(new Set());
   const [board, setBoard] = useState(initialBoard);
   const [currInput, setCurrInput] = useState({ attempt: 0, letterPos: 0 })
   const [lettersInfo, setLettersInfo] = useState({});
@@ -20,6 +21,7 @@ function App() {
   const [showGameOverScreen, setShowGameOverScreen] = useState(true);
   const [replay, setReplay] = useState(0);
   console.log(solution)
+  console.log(allowedWordSet)
 
   useEffect(() => {
     fetchWords().then((words) => {
@@ -27,6 +29,12 @@ function App() {
       setWordSet(words.wordSet);
     })
   }, [replay])
+
+  useEffect(() => {
+    fetchAllowedWords().then((words) => {
+      setAllowedWordSet(words)
+    })
+  }, [])
 
   const onSelectLetter = (keyValue) => {
     if (currInput.letterPos > 4) {
@@ -56,7 +64,7 @@ function App() {
   const onEnter = () => {
     const currWord = board[currInput.attempt].join("").toLowerCase();
     if (currInput.letterPos !== 5) return;
-    if (wordSet.has(currWord)) {
+    if (allowedWordSet.has(currWord)) {
       setCurrInput((prevInput) => {
         return { ...prevInput, attempt: prevInput.attempt + 1, letterPos: 0 }
       })
