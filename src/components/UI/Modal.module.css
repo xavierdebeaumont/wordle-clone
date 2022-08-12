@@ -1,32 +1,32 @@
 .container {
-    top: 50%;
-    left: 50%;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.75);
-    cursor: pointer;
-  }
-  
-  .modal {
-    position: fixed;
-    width: 25%;
-    z-index: 100;
-    overflow: hidden;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
 
-  .button-disposition {
-    display: flex;
-    flex-direction: line;
-    justify-content: space-around;
-  }
+.modal {
+  position: fixed;
+  width: 25%;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.button-disposition {
+  display: flex;
+  flex-direction: line;
+  justify-content: space-around;
+}
