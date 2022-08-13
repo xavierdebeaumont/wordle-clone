@@ -24,7 +24,6 @@ function App() {
   const [showGameOverScreen, setShowGameOverScreen] = useState(true);
   const [replay, setReplay] = useState(0);
   console.log(solution);
-  console.log(allowedWordSet);
 
   useEffect(() => {
     fetchWords().then((words) => {
