@@ -7,6 +7,7 @@ import GameOver from "./components/Layout/GameOver";
 import { initialBoard } from "./Word";
 import { useEffect, useState, createContext } from "react";
 import { fetchWords, fetchAllowedWords } from "./Word";
+import { generatePatternDictionary } from "./WordSuggestion";
 
 export const AppContext = createContext();
 

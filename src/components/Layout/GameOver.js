@@ -18,7 +18,7 @@ const GameOver = (props) => {
         </h1>
       )}
       {replay > 0 && (
-        <h1 className={styles.border}>You played {replay} of times</h1>
+        <h1 className={styles.border}>You played {replay+1} times</h1>
       )}
     </Modal>
   );

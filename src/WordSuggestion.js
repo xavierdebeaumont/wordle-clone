@@ -2,6 +2,14 @@ const information = (x) => {
   return x > 0 ? -Math.log2(x) : 0;
 };
 
+const entropy = (probPattern) => {
+  const result = 0;
+  for (let i; i < probPattern.length; i++) {
+    result = probPattern[i] * information(probPattern[i]);
+  }
+  return result;
+};
+
 const wordsToInt = (words) => {
   const array = [];
   words.forEach((word) => {
@@ -30,7 +38,6 @@ function generateTernaryList() {
 
 const generateNewPossibleWords = (word, pattern, possibleWords) => {
   let newPossibleWords = possibleWords;
-
   if (word !== undefined) {
     [...pattern].forEach((pattern, i) => {
       if (pattern === "0") {
@@ -51,20 +58,21 @@ const generateNewPossibleWords = (word, pattern, possibleWords) => {
   return newPossibleWords;
 };
 
-export const generatePatternDistribution = (allowedWordSet) => {
-  let patternDistribution = {};
+export const generatePatternDictionary = (allowedWordSet) => {
+  let patternDictionary = {};
   let ternaryList = generateTernaryList();
-  allowedWordSet.forEach(word => {
-    for(let i=0; i<243 ;i++){
-        generateNewPossibleWords(word, ternaryList[i], allowedWordSet);
-    }
-  })
-};
 
-const entropy = (probPattern) => {
-  const result = 0;
-  for (let i; i < probPattern.length; i++) {
-    result = probPattern[i] * information(probPattern[i]);
-  }
-  return result;
+  allowedWordSet.forEach((word) => {
+    for (let i = 0; i < 243; i++) {
+      if (patternDictionary[word] === undefined) {
+        patternDictionary[word] = {};
+      }
+      patternDictionary[word][ternaryList[i]] = generateNewPossibleWords(
+        word,
+        ternaryList[i],
+        allowedWordSet
+      );
+    }
+  });
+  return patternDictionary;
 };
