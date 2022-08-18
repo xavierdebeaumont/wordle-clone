@@ -60,6 +60,7 @@ const generateNewPossibleWords = (word, pattern, possibleWords) => {
 
 export const generatePatternDictionary = (allowedWordSet) => {
   let patternDictionary = {};
+  let wordInformation = {};
   let ternaryList = generateTernaryList();
 
   allowedWordSet.forEach((word) => {
@@ -74,5 +75,31 @@ export const generatePatternDictionary = (allowedWordSet) => {
       );
     }
   });
-  return patternDictionary;
+  if (patternDictionary !== undefined) {
+    for (const [word, patternList] of Object.entries(patternDictionary)) {
+      let entropy = 0;
+      for (const [patternName, pattern] of Object.entries(patternList)) {
+        if (wordInformation[word] === undefined) {
+          wordInformation[word] = {};
+        }
+        entropy +=
+          (pattern.length / allowedWordSet.length) *
+          information(pattern.length / allowedWordSet.length);
+      }
+      wordInformation[word] = entropy;
+    }
+  }
+  return {patternDictionary, wordInformation};
+};
+
+export const bestMoves = (wordInformation) => {
+  let bestWord;
+  let bestInfo = 0;
+  for (const [wordName, information] of Object.entries(wordInformation)) {
+    if (information > bestInfo) {
+      bestWord = wordName;
+      bestInfo = information;
+    }
+  }
+  return {bestWord, bestInfo};
 };
