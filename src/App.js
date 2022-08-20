@@ -7,7 +7,6 @@ import GameOver from "./components/Layout/GameOver";
 import { initialBoard } from "./Word";
 import { useEffect, useState, createContext, useMemo } from "react";
 import { fetchWords, fetchAllowedWords } from "./Word";
-import { generatePatternDictionary, bestMoves } from "./WordSuggestion";
 
 export const AppContext = createContext();
 
@@ -25,14 +24,6 @@ function App() {
   const [showGameOverScreen, setShowGameOverScreen] = useState(true);
   const [replay, setReplay] = useState(0);
   console.log(solution);
-
-  // const {patternDictionary, wordInformation} = useMemo(() => {
-  //   return generatePatternDictionary([...wordSet]);
-  // }, [wordSet]);
-
-  // const {bestWord, bestInfo} = useMemo(() => {
-  //   return bestMoves(wordInformation);
-  // }, [wordInformation]);
 
   useEffect(() => {
     fetchWords().then((words) => {
