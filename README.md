@@ -1,5 +1,5 @@
 # wordle-clone
-I made a clone of wordle in react with some suggestion of plays.
+A clone of wordle in react with some suggestion of plays.
 
 ## Getting Started with Create React App
 
